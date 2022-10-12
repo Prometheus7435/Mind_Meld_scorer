@@ -16,3 +16,4 @@ This script is very much "on the rails", following a linear path of
 * give the hosts the chnce to give/take points away
 * proceed to the next round and repeat
 
+This is a CLI (command line interface) script with no GUI (graphical user interface) or anything pretty about it. It's functional with a bit of sass, and that's it.
