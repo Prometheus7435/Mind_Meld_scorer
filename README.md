@@ -17,3 +17,5 @@ This script is very much "on the rails", following a linear path of
 * proceed to the next round and repeat
 
 This is a CLI (command line interface) script with no GUI (graphical user interface) or anything pretty about it. It's functional with a bit of sass, and that's it.
+
+All submitions must be spelled the same in order for the script to compare them. So no armor and armour, or theater and theatre.
