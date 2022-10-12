@@ -9,8 +9,33 @@
 # acheived a MIND MELD and score additional points.
 
 mind_meld_bonus = 3
-required_entries = 3
+required_entries = 5
 max_rounds = 5
+
+
+def mod_points(players: dict) -> dict:
+    for p in players:
+        print(f"{p}")
+
+    while True:
+        user_input = input("Which player would you like to +/- points to?  ")
+        try:
+            point_mod = int(input("How many points?  "))
+            players[user_input]["score"] += point_mod
+        except:
+            print("SNELL, NO FRACTIONS!")
+
+        end_mod = input("Is that all the random points to give out? (y/n)")
+        if end_mod.startswith("y"):
+            break
+        else:
+            print("\n")
+
+    print("The new player scores are")
+    for p in players:
+        print(f'{p}: {players[p]["score"]}')
+
+    return players
 
 
 def get_players() -> list:
@@ -24,8 +49,6 @@ def get_players() -> list:
         if not confirmation.startswith("n"):
             break
 
-    # players = {a: {"entries": [], "score": 0} for a in entries}
-    # return players
     return {a: {"entries": [], "score": 0} for a in entries}
 
 
@@ -44,7 +67,7 @@ def scoring(player_list: list, compare_list: list, meld_requirement: int):
 
 def rounds(players: dict):
     meld_requirement = required_entries
-    print(meld_requirement)
+    # print(meld_requirement)
 
     for p in players:
         players[p]["entries"] = (
@@ -69,8 +92,8 @@ def rounds(players: dict):
         players[p]["score"] += player_round_score
 
     chaos = input("are there chaos points to be given out? (y/n): ")
-    if chaos.startwith("y"):
-        pass
+    if chaos.startswith("y"):
+        players = mod_points(players)
 
     return players
 
@@ -85,7 +108,7 @@ def main(players: dict):
             print(f'{p} has {players[p]["score"]} points')
         print("\n")
 
-        if num_round >= max_round:
+        if num_round >= max_rounds:
             game_over = input("was that the last of the normal rounds? (y/n): ")
             if game_over.startswith("y"):
                 break
